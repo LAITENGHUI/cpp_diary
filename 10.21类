@@ -1,0 +1,18 @@
+struct Sales_data{
+    //新增构造函数 //自定义构造函数的作用是在创建类时传入实参进行初始化
+    Sales_data() = default;//默认构造
+    Sales_data(const string &s): bookNo(s) { } //新的构造函数，只初始化bookNo成员
+    Sales_data(const string &s, unsigned n, double p):
+    			bookNo(s), units_sold(n), revenue(p*n) { } //初始化多个成员
+    Sales_data(istream &) //这里只声明但没有定义该成员，需要在类的外部定义构造函数.这里省略了形参
+        
+    //之前已有的其他成员 //另一种初始化的方式
+    double revenue = 0.0;//成员声明可以在成员函数体后面(isbn()后面)
+    string isbn() const { return revenue;} //const导致isbn()为常量成员函数，只读而无法向对象写入数据
+};//注意这里有分号
+
+//在类的外部定义构造函数
+Sales_data::Sales_data(istream &is)
+{
+    read(is, *this);//从输入读取is
+}
