@@ -16,3 +16,6 @@ Sales_data::Sales_data(istream &is)
 {
     read(is, *this);//从输入读取is
 }
+
+几个概念的学习：
+什么是友元？
