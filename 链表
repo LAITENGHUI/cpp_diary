@@ -1,0 +1,31 @@
+//新建链表结构
+struct ListNode
+{
+    int val;//声明存值的成员
+    ListNode *next;//声明指针成员，指向下一个链表对象的指针
+	ListNode(int x): val(x), next(Null) {}// 这是构造函数。将value初始化为x，头指针为空
+};
+
+//循环创建链表
+ListNode* createLinkedList(int arr[], int n){
+    if (n==0)
+        return NULL;
+    ListNode* head = new ListNode(arr[0]);//创建头节点
+    ListNode* curNode = head;//创建临时节点
+    for( int i = 1; i < n; i++){
+        curNode->next = new ListNode(arr[i]);//创建新节点
+        curNode = curNode->next;//移动临时节点
+    }
+    return head;
+}
+
+//打印链表
+void printLinkedList(ListNode* head){
+    ListNode* curNode = head;//创建临时节点
+    while( curNode != NULL){
+        cout << curNode->val << "->";
+        curNode = curNode->next;
+    }
+    cout << "NULL" << endl;
+    return;
+}
